@@ -1,0 +1,68 @@
+﻿@using Entities.Concrete
+@model List<WriterMessage>
+
+@{
+    ViewData["Title"] = "Gelen Kutusu";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+@if (Model.Count() < 1)
+{
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Gelen Kutusu</h4>
+                <p class="alert alert-info d-flex justify-content-center align-items-center"><span><i class="mdi mdi-information-outline"></i> Gelen Kutunuzda Şimdilik Mesaj Bulunmuyor</span></p>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Gelen Kutusu</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Konu</th>
+                                <th>Gönderen</th>
+                                <th>Tarih</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <th>@item.WiterMessageID</th>
+                                    @if (item.ReceiverStatus)
+                                    {
+                                        if (!item.SenderStatus)
+                                        {
+                                            <td>@item.Subject</td>
+                                        }
+                                        else
+                                        {
+                                            <td>@item.Subject <span class=" btn btn-outline-primary btn-sm">Cevaplandı</span></td>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <td>@item.Subject <span class=" btn btn-danger btn-sm">Okunmadı</span></td>
+                                    }
+                                    <td>@item.SenderName</td>
+                                    <td>@(((DateTime)item.Date).ToString("dd-MM-yyyy HH:mm"))</td>
+                                    <td><a class="btn btn-outline-success btn-sm" asp-area="User" asp-controller="Message" asp-action="ReplyMessage" asp-route-id="@item.WiterMessageID">Mesajı Yanıtla</a></td>
+                                    <td><a class="btn btn-outline-primary btn-sm" asp-area="User" asp-controller="Message" asp-action="InboxMessageDetails" asp-route-id="@item.WiterMessageID">Mesaj Detayı</a></td>
+                                </tr>
+                            }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+}

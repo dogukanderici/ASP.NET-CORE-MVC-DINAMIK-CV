@@ -1,0 +1,45 @@
+﻿@model GetUserListViewModel
+
+@{
+    ViewData["Title"] = "UserRoleList";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+@if (Model != null)
+{
+    @if (Model.UserRoleInfo != null)
+    {
+        @if (Model.UserRoleInfo.Count() > 0)
+        {
+            <div class="row">
+                <div class="col-lg-12 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h2 class="mb-0">Kullanıcı Rol Listesi</h2>
+                            <div class="table-responsive">
+                                <table class="table align-items-center table-flush">
+                                    <thead>
+                                        <tr>
+                                            <th>Rol Adı</th>
+                                            <th>Güncelle</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.UserRoleInfo)
+                                        {
+                                            <tr>
+                                                <th>@item</th>
+                                                <td><a class="btn btn-outline-primary">Ekle</a></td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                                <a href="/UserRoleManagement/UserRoleList" class="btn btn-outline-success">Yeni Rol Ekle</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+}

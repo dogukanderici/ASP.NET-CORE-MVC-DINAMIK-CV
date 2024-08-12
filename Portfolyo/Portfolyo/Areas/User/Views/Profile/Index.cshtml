@@ -1,0 +1,47 @@
+﻿@using Portfolyo.Areas.User.Models
+@model UserEditViewModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Profil Bilgilerini Düzenle</h4>
+            <form id="ProfileUpdateForm" asp-area="User" asp-controller="Profile" asp-action="Index" class="forms-sample" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label asp-for="@Model.Name">Adınız</label>
+                    <input asp-for="@Model.Name" type="text" class="form-control" id="LoggedUserName" placeholder="Ad" />
+                    <span class="text-danger" asp-validation-for="@Model.Name"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Surname">Soyadınız</label>
+                    <input asp-for="@Model.Surname" type="text" class="form-control" id="LoggedUserSurname" placeholder="Soyad" />
+                    <span class="text-danger" asp-validation-for="@Model.Surname"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password">Şifreniz</label>
+                    <input asp-for="Password" type="password" class="form-control" id="LoggedUserPassword" placeholder="Şifre" />
+                    <span class="text-danger" asp-validation-for="@Model.Password"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ConfirmPassword">Şifre Tekrar</label>
+                    <input asp-for="ConfirmPassword" type="text" class="form-control" id="LoggedUserConfirmPassword" placeholder="Şifre Tekrar" />
+                    <span class="text-danger" asp-validation-for="@Model.ConfirmPassword"></span>
+                </div>
+                <div class="form-group">
+                    <label>Görsel Yükleyiniz</label>
+                    <input type="file" asp-for="@Model.Picture" />
+                    <span class="text-danger" asp-validation-for="@Model.Picture"></span>
+                </div>
+                <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                <input type="submit" value="Güncelle" class="btn btn-success" />
+            </form>
+        </div>
+    </div>
+</div>
+

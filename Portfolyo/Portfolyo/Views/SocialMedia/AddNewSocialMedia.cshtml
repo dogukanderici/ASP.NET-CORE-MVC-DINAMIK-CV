@@ -1,0 +1,54 @@
+﻿@using Entities.Concrete
+@model SocialMedia
+
+@{
+    ViewData["Title"] = "Sosyal Medya Hesabı Ekleme";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">Yeni Sosyal Medya Hesabı Ekleme</h2>
+            <form id="AddNewSocialMediaForm" class="form-sample" asp-controller="SocialMedia" asp-action="AddNewSocialMedia" method="post">
+                <div class="form-group row">
+                    <label asp-for="Name" class="col-sm-2 col-form-label">Başlığı</label>
+                    <div class="col-sm-10">
+                        <input asp-for="Name" class="form-control" type="text" placeholder="Başlık" />
+                    </div>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="Url" class="col-sm-2 col-form-label">Görsel URL</label>
+                    <div class="col-sm-10">
+                        <input asp-for="Url" type="text" class="form-control" placeholder="Görsel URL" />
+                    </div>
+                    <span asp-validation-for="Url" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="Icon" class="col-sm-2 col-form-label">İkon</label>
+                    <div class="col-sm-10">
+                        <input asp-for="Icon" type="text" class="form-control" placeholder="İkon" />
+                    </div>
+                    <span asp-validation-for="Icon" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="Status" class="col-sm-2 col-form-label">Aktif Mi?</label>
+                    <div class="col-sm-10">
+                        <input asp-for="Status" type="checkbox" />
+                    </div>
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <span class="col-sm-2"></span>
+                    <div class="col-md-2">
+                        <input type="submit" value="Kaydet" class="form-control btn btn-success" />
+                    </div>
+                    <div class="col-md-2">
+                        <a href="/socialmedia" class="form-control btn btn-danger">İptal</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

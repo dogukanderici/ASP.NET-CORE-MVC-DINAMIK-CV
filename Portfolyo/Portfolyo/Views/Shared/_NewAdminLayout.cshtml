@@ -1,0 +1,41 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+@await Html.PartialAsync("/Views/Admin/NewPartialHead.cshtml")
+<body>
+    <div class="container-scroller">
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+            <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
+                <a class="sidebar-brand brand-logo" href="~/corona-free-dark-bootstrap-admin-template-1.0.0/template/assets/index.html"><img src="~/corona-free-dark-bootstrap-admin-template-1.0.0/template/assets/images/logo.svg" alt="logo" /></a>
+                <a class="sidebar-brand brand-logo-mini" href="~/corona-free-dark-bootstrap-admin-template-1.0.0/template/assets/index.html"><img src="~/corona-free-dark-bootstrap-admin-template-1.0.0/template/assets/images/logo-mini.svg" alt="logo" /></a>
+            </div>
+            @await Html.PartialAsync("/Views/Admin/NewSideBar.cshtml")
+        </nav>
+        <div class="container-fluid page-body-wrapper">
+            @await Html.PartialAsync("/Views/Admin/NewPartialNavbar.cshtml")
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    <div class="page-header">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">@ViewBag.v2</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">@ViewBag.v1</li>
+                            </ol>
+                        </nav>
+                    </div>
+                    @RenderBody()
+                </div>
+                @await RenderSectionAsync("Scripts", required: false)
+                @await Html.PartialAsync("/Views/Admin/NewPartialFooter.cshtml")
+            </div>
+        </div>
+    </div>
+    @await Html.PartialAsync("/Views/Admin/NewPartialScripts.cshtml")
+</body>
+</html>

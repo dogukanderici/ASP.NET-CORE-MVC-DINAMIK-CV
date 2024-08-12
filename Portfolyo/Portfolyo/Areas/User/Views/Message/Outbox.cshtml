@@ -1,0 +1,53 @@
+﻿@using Entities.Concrete
+@model List<WriterMessage>
+
+@{
+    ViewData["Title"] = "Giden Kutusu";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+@if (Model.Count() < 1)
+{
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Giden Kutusu</h4>
+                <p class="alert alert-info d-flex justify-content-center align-items-center"><span><i class="mdi mdi-information-outline"></i> Henüz Yeni Bir Mesaj Göndermediniz</span></p>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Giden Kutusu</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Konu</th>
+                                <th>Alıcı</th>
+                                <th>Tarih</th>
+                                <th>Detaylar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <th>@item.WiterMessageID</th>
+                                    <td>@item.Subject</td>
+                                    <td>@item.ReceiverName</td>
+                                    <td>@(((DateTime)item.Date).ToString("dd-MM-yyyy HH:mm"))</td>
+                                    <td><a class="btn btn-outline-primary btn-sm" asp-area="User" asp-controller="Message" asp-action="OutboxMessageDetails" asp-route-id="@item.WiterMessageID">Mesaj Detayı</a></td>
+                                </tr>
+                            }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+}

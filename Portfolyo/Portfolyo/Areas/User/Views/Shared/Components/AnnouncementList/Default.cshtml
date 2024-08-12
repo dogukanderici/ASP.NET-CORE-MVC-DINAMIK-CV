@@ -1,0 +1,38 @@
+﻿@using Entities.Concrete
+@model List<Announcement>
+
+@{
+    string status = "";
+    string statusClass = "";
+}
+
+<div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+    <p class="mb-0 font-weight-normal float-left dropdown-header">Bildirimler</p>
+    @foreach (var item in Model)
+    {
+        if (!@item.Status)
+        {
+            status = "Devam Ediyor";
+            statusClass = "badge badge-info";
+        }
+        else
+        {
+            status = "Tamamlandı";
+            statusClass = "badge badge-success";
+        }
+
+        <a class="dropdown-item preview-item" href="/user/default/announcementdetails/@item.AnnouncementId">
+            <div class="preview-thumbnail">
+                <div class="preview-icon bg-success">
+                    <i class="ti-info-alt mx-0"></i>
+                </div>
+            </div>
+            <div class="preview-item-content">
+                <h6 class="preview-subject font-weight-normal">@item.Title</h6>
+                <p class="@statusClass">
+                    @status
+                </p>
+            </div>
+        </a>
+    }
+</div>

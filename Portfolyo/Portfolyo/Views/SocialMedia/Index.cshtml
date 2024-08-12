@@ -1,0 +1,68 @@
+﻿@using Entities.Concrete
+@model List<SocialMedia>
+
+@{
+    ViewData["Title"] = "Sosyal Medya Hesaplarım";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+@if (Model.Count() < 1)
+{
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <p class="alert alert-danger d-flex justify-content-center align-items-center"><i class="mdi mdi-account-remove"></i> Kayıtlı Sosyal Medya Hesabınız Bulunamadı!</p>
+                    <a href="/socialmedia/addnewsocialmedia" class="btn btn-outline-success"><i class="mdi mdi-plus"></i> Sosyal Medya Hesabı Ekle</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="mb-0">Sosyal Medya Hesaplarım</h2>
+                    <div class="table-responsive">
+                        <table class="table align-items-center table-flush">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Başlık</th>
+                                    <th>Aktif Mi?</th>
+                                    <th>Sil</th>
+                                    <th>Güncelle</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <th>@item.SocialMediaId</th>
+                                        <td>@item.Name</td>
+                                        @if (@item.Status)
+                                        {
+                                            <td><span class="badge badge-success">Evet</span></td>
+                                        }
+                                        else
+                                        {
+                                            <td><span class="badge badge-danger">Hayır</span></td>
+                                        }
+                                        <td><a class="btn btn-outline-danger" asp-controller="SocialMedia" asp-action="DeleteSocialMedia" asp-route-id="@item.SocialMediaId"><i class="mdi mdi-delete"></i></a></td>
+                                        <td><a class="btn btn-outline-primary" asp-controller="SocialMedia" asp-action="UpdateSocialMedia" asp-route-id="@item.SocialMediaId"><i class="mdi mdi-grease-pencil"></i></a></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <a href="/socialmedia/addnewsocialmedia" class="btn btn-outline-success"><i class="mdi mdi-plus"></i> Sosyal Medya Hesabı Ekle</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}

@@ -1,0 +1,163 @@
+﻿<ul class="nav">
+    <li class="nav-item profile">
+        <div class="profile-desc">
+            @await Component.InvokeAsync("AdminUserSideBar")
+            <a href="#" id="profile-dropdown" data-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>
+            <div class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list" aria-labelledby="profile-dropdown">
+                <a href="/user/profile/index" class="dropdown-item preview-item">
+                    <div class="preview-thumbnail">
+                        <div class="preview-icon bg-dark rounded-circle">
+                            <i class="mdi mdi-settings text-primary"></i>
+                        </div>
+                    </div>
+                    <div class="preview-item-content">
+                        <p class="preview-subject ellipsis mb-1 text-small">Profil Ayarları</p>
+                    </div>
+                </a>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item preview-item">
+                    <div class="preview-thumbnail">
+                        <div class="preview-icon bg-dark rounded-circle">
+                            <i class="mdi mdi-calendar-today text-success"></i>
+                        </div>
+                    </div>
+                    <div class="preview-item-content">
+                        <p class="preview-subject ellipsis mb-1 text-small">To-do list</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </li>
+    <li class="nav-item nav-category">
+        <span class="nav-link">Navigation</span>
+    </li>
+    <li class="nav-item menu-items">
+        <a class="nav-link" href="/dashboard">
+            <span class="menu-icon">
+                <i class="mdi mdi-home"></i>
+            </span>
+            <span class="menu-title">Ana Sayfa</span>
+        </a>
+    </li>
+    <li class="nav-item menu-items">
+        <a class="nav-link" href="/feature">
+            <span class="menu-icon">
+                <i class="mdi mdi-apple-keyboard-caps"></i>
+            </span>
+            <span class="menu-title">Öne Çıkanlarım</span>
+        </a>
+    </li>
+    <li class="nav-item menu-items">
+        <a class="nav-link" href="/about">
+            <span class="menu-icon">
+                <i class="mdi mdi-account"></i>
+            </span>
+            <span class="menu-title">Hakkımda</span>
+        </a>
+    </li>
+    <li class="nav-item menu-items">
+        <a class="nav-link" href="/service">
+            <span class="menu-icon">
+                <i class="mdi mdi-account"></i>
+            </span>
+            <span class="menu-title">Hizmetlerim</span>
+        </a>
+    </li>
+    <li class="nav-item menu-items">
+        <a class="nav-link" href="/skill">
+            <span class="menu-icon">
+                <i class="mdi mdi-keyboard"></i>
+            </span>
+            <span class="menu-title">Yeteneklerim</span>
+        </a>
+    </li>
+    <li class="nav-item menu-items">
+        <a class="nav-link" href="/portfolio">
+            <span class="menu-icon">
+                <i class="mdi mdi-projector-screen"></i>
+            </span>
+            <span class="menu-title">Projeler</span>
+        </a>
+    </li>
+    <li class="nav-item menu-items">
+        <a class="nav-link" href="/experience">
+            <span class="menu-icon">
+                <i class="mdi mdi-account-network"></i>
+            </span>
+            <span class="menu-title">Deneyimlerim</span>
+        </a>
+    </li>
+    <li class="nav-item menu-items">
+        <a class="nav-link" href="/experienceajax">
+            <span class="menu-icon">
+                <i class="mdi mdi-account-network"></i>
+            </span>
+            <span class="menu-title">Deneyimlerim AJAX</span>
+        </a>
+    </li>
+    <li class="nav-item menu-items">
+        <a class="nav-link" href="/testimonial">
+            <span class="menu-icon">
+                <i class="mdi mdi-account-check"></i>
+            </span>
+            <span class="menu-title">Referanslar</span>
+        </a>
+    </li>
+    <li class="nav-item menu-items">
+        <a class="nav-link" href="/socialmedia">
+            <span class="menu-icon">
+                <i class="mdi mdi-youtube"></i>
+            </span>
+            <span class="menu-title">Sosyla Medya Bilgilerim</span>
+        </a>
+    </li>
+    <li class="nav-item menu-items">
+        <a class="nav-link" href="/contactsubplace">
+            <span class="menu-icon">
+                <i class="mdi mdi-account-check"></i>
+            </span>
+            <span class="menu-title">İletişim Bilgilerim</span>
+        </a>
+    </li>
+    <li class="nav-item menu-items">
+        <a class="nav-link" href="/user/profile">
+            <span class="menu-icon">
+                <i class="mdi mdi-account-key"></i>
+            </span>
+            <span class="menu-title">Şifre ve Güvenlik</span>
+        </a>
+    </li>
+    <li class="nav-item menu-items">
+        <a class="nav-link" href="/panelrole">
+            <span class="menu-icon">
+                <i class="mdi mdi-account-key"></i>
+            </span>
+            <span class="menu-title">Panel Rol Yönetimi</span>
+        </a>
+    </li>
+    <li class="nav-item menu-items">
+        <a class="nav-link" href="/userrolemanagement/finduserrolelist">
+            <span class="menu-icon">
+                <i class="mdi mdi-account-key"></i>
+            </span>
+            <span class="menu-title">Kullanıcı Rol Yönetimi</span>
+        </a>
+    </li>
+    <li class="nav-item menu-items">
+        <a class="nav-link" href="/default">
+            <span class="menu-icon">
+                <i class="mdi mdi-home"></i>
+            </span>
+            <span class="menu-title">Siteye Git</span>
+        </a>
+    </li>
+    <li class="nav-item menu-items">
+        <a class="nav-link" href="http://www.bootstrapdash.com/demo/corona-free/jquery/documentation/documentation.html">
+            <span class="menu-icon">
+                <i class="mdi mdi-file-document-box"></i>
+            </span>
+            <span class="menu-title">Dokümanlar</span>
+        </a>
+    </li>
+</ul>

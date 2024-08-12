@@ -1,0 +1,286 @@
+﻿@using Entities.Concrete
+@model List<Experience>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+<div class="col-md-12 grid-margin">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Deneyim Listesi</h4>
+            <div class="row">
+                <div class="col-sm-2">
+                    <button type="button" id="btngetlistall" class="btn btn-outline-primary">Tüm Verileri Getir</button>
+                </div>
+            </div>
+
+            <div id="listexperience" class="table-responsive">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12 grid-margin">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Deneyim</h4>
+            <div class="row">
+                <div class="row col-sm-4">
+                    <input type="text" class="col-sm-9 form-control" id="inpIdFilter" placeholder="Id" />
+                    <div class="col-sm-3">
+                        <button type="button" id="btngetData" class="btn btn-outline-success">Sorgula</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="listexperienceById" class="table-responsive">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">Yeni Deneyim Ekleme</h2>
+            <div class="form-group row">
+                <label for="inpname" class="col-sm-2 col-form-label">Başlık</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inpname" placeholder="Başlık" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inpdate" class="col-sm-2 col-form-label">Tarih</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inpdate" placeholder="Tarih" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">
+                    <button type="button" id="btnadd" class="btn btn-outline-success">Kaydet</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script>
+
+        function deleteForAjax(id) {
+            $.ajax({
+                type: "post",
+                url: "/ExperienceAjax/DeleteExperience/" + id,
+                contentType: "application/json",
+                dataType: "json",
+                success: function (funk3) {
+                    $("#btngetlistall").trigger("click");
+                }
+            });
+        }
+
+        function saveUpdatedDataForAjax(id) {
+            console.log("id: ", id);
+            console.log("Name: ", $("#updname").val());
+            console.log("Date: ", $("#upddate").val());
+
+            let values = {
+                ExperienceId: id,
+                Name: $("#updname").val(),
+                Date: $("#upddate").val(),
+                ImageUrl: "-",
+                Description: "-"
+            };
+
+            $.ajax({
+                type: "Post",
+                url: "/ExperienceAjax/UpdateExperience/",
+                data: values,
+                success: function (successData) {
+                    alert("Güncelleme Başarılı!");
+                    $("#btngetlistall").trigger("click");
+                },
+                complete: function (xhr, status) {
+                    console.log("xhr.status: ", xhr.status);
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                        console.log("İşlem Başarılı");
+                    }
+                    else if (xhr.status >= 400 && xhr.status < 500) {
+                        console.error("BİR İSTEMCİ HATASI OLUŞTU: ", xhr.responseText);
+                        alert("BİR İSTEMCİ HATASI OLUŞTU: ", xhr.responseText);
+                    }
+                    else if (xhr.status >= 500 && xhr.status < 600) {
+                        console.error("BİR İSTEMCİ HATASI OLUŞTU: ", xhr.responseText);
+                        alert("BİR İSTEMCİ HATASI OLUŞTU: ", xhr.responseText);
+                    }
+                    else {
+                        alert("Beklenmeyen Bir Hata Oluştu!");
+                    }
+                }
+            });
+        }
+
+        function updateForAjax(id) {
+            console.log("id: ", id);
+
+            $.ajax({
+                type: "get",
+                url: "/ExperienceAjax/GetById",
+                data: { id: id },
+                contentType: "application/json",
+                dataType: "json",
+                success: function (resultData) {
+                    let result = jQuery.parseJSON(resultData);
+                    let htmlstr =
+                        '<div class="col-md-12 grid-margin stretch-card">' +
+                        '<div class="card">' +
+                        '<div class="card-body">' +
+                        '<h2 class="card-title"> Deneyim Güncelleme </h2>' +
+                        '<div class="form-group row">' +
+                        '<label for="updname" class= "col-sm-2 col-form-label">Başlık</label>' +
+                        '<div class="col-sm-10">' +
+                        '<input type="text" class="form-control" id="updname" placeholder="Başlık" value="' + result.Name + '" />' +
+                        '</div>' +
+                        '</div>' +
+                        '<div class="form-group row">' +
+                        '<label for="upddate" class="col-sm-2 col-form-label">Tarih</label>' +
+                        '<div class="col-sm-10">' +
+                        '<input type="text" class="form-control" id="upddate" placeholder="Tarih" value="' + result.Date + '" />' +
+                        '</div>' +
+                        '</div>' +
+                        '<div class="row" >' +
+                        '<div class="col-sm-2" >' +
+                        '<button type="button" id="btnupdate" onclick="saveUpdatedDataForAjax(' + result.ExperienceId + ')" class="btn btn-outline-primary">Kaydet</button>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>';
+
+                    $("#listexperience").html(htmlstr);
+                },
+                error: function (err) {
+                    console.log("Err: ", err);
+                }
+            });
+        }
+
+        function getDataList() {
+            $.ajax({
+                contentType: "application/json",
+                dataType: "json",
+                type: "Get",
+                url: "/ExperienceAjax/ListExperience/",
+
+                success: function (funk) {
+                    let values = jQuery.parseJSON(funk);
+                    console.log("values: ", values);
+
+                    let htmlstring = '<div class="table-responsive">' +
+                        '<table class="table">' +
+                        '<thead>' +
+                        '<tr>' +
+                        '<th>#</th>' +
+                        '<th>Başlık</th>' +
+                        '<th>Tarih</th>' +
+                        '<th>Sil</th>' +
+                        '<th>Güncelle</th>' +
+                        '</tr>' +
+                        '</thead>' +
+                        '<tbody>';
+
+                    $.each(values, (index, value) => {
+                        htmlstring += '<tr>' +
+                            '<th>' + value.ExperienceId + '</th>' +
+                            '<td>' + value.Name + '</td>' +
+                            '<td>' + value.Date + '</td>' +
+                            '<td><button type="button" id="btndelete" onclick="deleteForAjax(' + value.ExperienceId + ')" class="btn btn-outline-danger">Sil</button></td>' +
+                            '<td><button type="button" id="btnupdate" onclick="updateForAjax(' + value.ExperienceId + ')" class="btn btn-outline-primary">Güncelle</button></td>' +
+                            '</tr>';
+                    });
+
+                    htmlstring += '</tbody>' +
+                        '</table>' +
+                        '</div>';
+
+                    $("#listexperience").html(htmlstring);
+                }
+            });
+        }
+
+        $("#btngetlistall").click(getDataList);
+
+        $("#btnadd").click(function () {
+            let values = {
+                Name: $("#inpname").val(),
+                Date: $("#inpdate").val(),
+                ImageUrl: '-',
+                Description: '-'
+            };
+
+            $.ajax({
+                type: "Post",
+                url: "/ExperienceAjax/AddExperience/",
+                data: values,
+                success: function (funk1) {
+                    let result = jQuery.parseJSON(funk1);
+                    alert(values.Name + " Başarıyla Eklendi");
+                    $("#btngetlistall").trigger("click");
+                }
+            });
+        });
+
+        $("#btngetData").click(function () {
+            let id = $("#inpIdFilter").val();
+
+            $.ajax({
+                contentType: "application/json",
+                dataType: "json",
+                type: "get",
+                url: "/ExperienceAjax/GetById/",
+                data: { id: id },
+                success: function (funk2) {
+                    if (funk2 != "null") {
+                        console.log("funk2: ", funk2);
+                        let result = jQuery.parseJSON(funk2);
+                        let htmlstr = '<div class="table-responsive">' +
+                            '<table class="table">' +
+                            '<thead>' +
+                            '<tr>' +
+                            '<th>ID</th>' +
+                            '<th>Başlık</th>' +
+                            '<th>Tarih</th>' +
+                            '</tr>' +
+                            '</thead>' +
+                            '<tbody>' +
+                            '<td>' + result.ExperienceId + '</td>' +
+                            '<td>' + result.Name + '</td>' +
+                            '<td>' + result.Date + '</td>' +
+                            '</tr>' +
+                            '</tbody>' +
+                            '</table>' +
+                            '</div>';
+
+                        $("#listexperienceById").html(htmlstr);
+                    }
+                    else {
+                        alert(id + ' Değerine Ait Veri Bulunamadı!');
+                    }
+                },
+                complete: function (cmp) {
+                    console.log("Sorgu Tamamlandı: ", cmp);
+                },
+                error: function (err) {
+                    alert(err);
+                }
+            });
+        });
+    </script>
+}
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>

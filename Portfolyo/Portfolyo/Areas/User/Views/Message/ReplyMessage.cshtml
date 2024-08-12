@@ -1,0 +1,46 @@
+﻿@using Entities.Concrete
+@model WriterMessage
+
+@{
+    ViewData["Title"] = "Mesajı Yanıtla";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Yanıtla</h4>
+            <form id="ReplyMessageForm" class="forms-sample" asp-area="User" asp-controller="Message" asp-action="ReplyMessage" method="post">
+                <div class="form-group row">
+                    <label asp-for="ReceiverName" class="col-sm-2">Alıcı Adı</label>
+                    <div class="col-sm-10">
+                        <label asp-for="ReceiverName" type="text" class="form-control" id="InputSenderName">@Model.ReceiverName</label>
+                        @Html.HiddenFor(m => m.ReceiverName)
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="Receiver" class="col-sm-2">Alıcı</label>
+                    <div class="col-sm-10">
+                        <label asp-for="Receiver" type="text" class="form-control" id="InputSender">@Model.Receiver</label>
+                        @Html.HiddenFor(m => m.Receiver)
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="Subject" class="col-sm-2">Konu</label>
+                    <div class="col-sm-10">
+                        <input asp-for="Subject" type="text" class="form-control" id="InputSubject" placeholder="Konu">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="MessageContent" class="col-sm-2">İçerik</label>
+                    <div class="col-sm-10">
+                        <textarea asp-for="MessageContent" type="text" class="form-control" id="Inputİçerik" rows="4" placeholder="İçerik"></textarea>
+                    </div>
+                </div>
+                <input type="submit" value="Yanıtla" class="btn btn-primary">
+            </form>
+        </div>
+    </div>
+</div>
+
+

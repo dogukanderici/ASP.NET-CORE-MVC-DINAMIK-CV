@@ -1,0 +1,70 @@
+﻿@using Entities.Concrete
+@model List<WriterUser>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+<div class="col-md-6">
+    <div class="p-2">
+        <button type="button" id="btngetlistall" class="btn btn-outline-primary">Verileri Getir</button>
+        <button type="button" id="btnadduser" class="btn btn-outline-success">Kaydet</button>
+    </div>
+</div>
+
+<h4 class="text-center">Yazar Listesi</h4>
+
+<div class="p-2" id="listuser">
+    veriler buraya gelecek.
+</div>
+
+<br>
+
+<div class="col-md-12">
+    <div class="form-group row">
+        <label for="inpname" class="col-sm-2 col-form-label">Ad</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inpname" placeholder="Ad" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="inpsurname" class="col-sm-2 col-form-label">Soyad</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inpsurname" placeholder="Soyad" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="inpusername" class="col-sm-2 col-form-label">Kullanıcı Adı</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inpusername" placeholder="Kullanıcı Adı" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="inpName" class="col-sm-2 col-form-label">Ad</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inpName" placeholder="Ad" />
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $("#btngetlistall").click(function () {
+            $.ajax({
+                contentType: "application/json",
+                dataType: "json",
+                type: "Get",
+                url: "/WriterUser/ListUser/",
+
+                success: function (funk) {
+                    let users = jQuery.parseJSON(funk);
+                    console.log("users: ", users);
+                }
+            });
+        });
+    </script>
+}
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>

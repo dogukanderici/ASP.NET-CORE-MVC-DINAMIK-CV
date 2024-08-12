@@ -1,0 +1,13 @@
+MIT License
+
+Copyright (c) 2024 Doðukan Derici
+
+Bu lisans, aþaðýdaki koþullarý saðlamanýz þartýyla bu yazýlým ve iliþkili belgeler (the "Yazýlým")'ý kullanma, kopyalama, deðiþtirme, birleþtirme, yayýmlama, daðýtma, alt lisans verme ve satma hakký verir:
+
+1. Yukarýdaki telif hakký bildirimi ve bu izin bildirimi, Yazýlým'ýn tüm kopyalarýna veya önemli bölümlerine dahil edilmelidir.
+
+2. YAZILIM "OLDUÐU GÝBÝ" SUNULUR, HERHANGÝ BÝR GARANTÝYÝ KAPSAMAZ, DOLAYISIYLA TÝCARÝ ELVERÝÞLÝLÝK, BELÝRLÝ BÝR AMACA UYGUNLUK VEYA ÝHLAL ETMÝYOR OLMA GARANTÝLERÝ DAHÝL ANCAK BUNLARLA SINIRLI OLMAYAN GARANTÝLERÝ KAPSLAMAZ. YAZILIM'I KULLANIMINIZDA DOÐAN HERHANGÝ BÝR ZARAR YAZILIM'I SAHÝBÝNÝN SORUMLULUÐUNDADIR.
+
+3. YAZILIM’IN KULLANIMINDAN DOÐAN HERHANGÝ BÝR ZARAR VEYA KULLANIM HATALARINDAN DOÐAN SONUÇLAR ÝÇÝN SAHÝBÝNÝN SORUMLULUÐU YOKTUR. BU, HERHANGÝ BÝR YÜKÜMLÜLÜK, SORUMLULUK VEYA CEZA YASALARINA KARÞI ÖNCEKÝ VEYA GELECEKTEKÝ DAVA VEYA ÝDDÝALARLA SINIRLANABÝLÝR.
+
+2024 tarihli bu telif hakký bildirimi ve bu izin bildirimi bu Yazýlým ile birlikte sunulmalýdýr.

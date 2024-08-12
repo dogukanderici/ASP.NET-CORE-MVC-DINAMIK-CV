@@ -1,0 +1,36 @@
+﻿@using Entities.Concrete
+@model WriterRole
+
+@{
+    ViewData["Title"] = "Rol Güncelleme";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">Rol Güncelleme</h2>
+            <form id="UpdateRoleForm" asp-controller="UserRoleManagement" asp-action="UpdateRole" method="post">
+                @Html.HiddenFor(r => r.Id)
+                <div class="form-group row">
+                    <label asp-for="Name" class="col-sm-2 col-form-label">Rol Adı</label>
+                    <div class="col-sm-10">
+                        <input asp-for="Name" class="form-control" type="text" placeholder="Rol Adı" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="IsActive" class="col-sm-2 col-form-label">Aktif Mi?</label>
+                    <div class="col-sm-10">
+                        <input asp-for="IsActive" type="checkbox" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <span class="col-sm-2"></span>
+                    <div class="col-sm-2">
+                        <input type="submit" value="Güncelle" class="form-control btn btn-outline-success" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

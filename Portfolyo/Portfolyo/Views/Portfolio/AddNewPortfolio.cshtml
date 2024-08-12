@@ -1,0 +1,105 @@
+﻿@model PortfolioListViewModel
+@{
+    ViewData["Title"] = "Yeni Proje";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">Yeni Proje Ekleme</h2>
+            <form id="AddNewPortfolioForm" asp-controller="Portfolio" asp-action="AddNewPortfolio" method="post" enctype="multipart/form-data">
+                <div class="form-group row">
+                    <label asp-for="Portfolio.Name" class="col-sm-2 col-form-label">Proje Adı</label>
+                    <div class="col-sm-10">
+                        <input asp-for="Portfolio.Name" type="text" class="form-control" placeholder="Proje Adı" />
+                    </div>
+                    <span asp-validation-for="Portfolio.Name" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Görsel 1</label>
+                    <div class="col-sm-10">
+                        <input type="file" asp-for="@Model.ProjectImage" />
+                    </div>
+                    <span asp-validation-for="@Model.ProjectImage" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="Portfolio.ProjectUrl" class="col-sm-2 col-form-label">Proje URL</label>
+                    <div class="col-sm-10">
+                        <input asp-for="Portfolio.ProjectUrl" type="text" class="form-control" placeholder="Proje URL" />
+                    </div>
+                    <span asp-validation-for="Portfolio.ProjectUrl" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Görsel 2</label>
+                    <div class="col-sm-10">
+                        <input type="file" asp-for="@Model.ProjectImage2" class="form-control" placeholder="Görsel 2" />
+                    </div>
+                    <span asp-validation-for="@Model.ProjectImage2" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="Portfolio.Price" class="col-sm-2 col-form-label">Proje Maliyeti</label>
+                    <div class="col-sm-10">
+                        <input asp-for="Portfolio.Price" type="text" class="form-control" placeholder="Proje Maliyeti" />
+                    </div>
+                    <span asp-validation-for="Portfolio.Price" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="Portfolio.State" class="col-sm-2 col-form-label">Proje Durumu</label>
+                    <div class="col-sm-10">
+                        <input asp-for="Portfolio.State" type="text" class="form-control" placeholder="Proje Durumu" />
+                    </div>
+                    <span asp-validation-for="Portfolio.State" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Platform</label>
+                    <div class="col-sm-10">
+                        <input type="file" asp-for="@Model.PlatformImage" />
+                    </div>
+                    <span asp-validation-for="@Model.PlatformImage" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Görsel 1</label>
+                    <div class="col-sm-10">
+                        <input type="file" asp-for="@Model.Image1" />
+                    </div>
+                    <span asp-validation-for="@Model.Image1" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Görsel 2</label>
+                    <div class="col-sm-10">
+                        <input type="file" asp-for="@Model.Image2" />
+                    </div>
+                    <span asp-validation-for="@Model.Image2" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Görsel 3</label>
+                    <div class="col-sm-10">
+                        <input type="file" asp-for="@Model.Image3" />
+                    </div>
+                    <span asp-validation-for="@Model.Image3" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Görsel 4</label>
+                    <div class="col-sm-10">
+                        <input type="file" asp-for="@Model.Image4" />
+                    </div>
+                    <span asp-validation-for="@Model.Image4" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="Portfolio.Value" class="col-sm-2 col-form-label">Proje İlerlemesi</label>
+                    <div class="col-sm-10">
+                        <input asp-for="Portfolio.Value" type="text" class="form-control" placeholder="Proje İlerlemesi" />
+                    </div>
+                    <span asp-validation-for="Portfolio.Value" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <span class="col-sm-2"></span>
+                    <div class="col-sm-2">
+                        <input type="submit" class="form-control btn btn-success" value="Kaydet" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

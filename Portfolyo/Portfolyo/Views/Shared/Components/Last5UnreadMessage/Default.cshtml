@@ -1,0 +1,31 @@
+﻿@using Entities.Concrete
+@model List<WriterMessage>
+
+@{
+    Layout = null;
+}
+
+@if (Model.Count() < 1)
+{
+    <p class="p-3 mb-0 text-center">Tüm Mesajlarınızı Okudunuz</p>
+}
+else
+{
+    <h6 class="p-3 mb-0">Okunmamış Mesajlar</h6>
+    <div class="dropdown-divider"></div>
+    @foreach (var item in Model)
+    {
+        <a class="dropdown-item preview-item" href="/user/message/inboxmessagedetails/@item.WiterMessageID">
+            <div class="preview-thumbnail">
+                <img src="~/corona-free-dark-bootstrap-admin-template-1.0.0/template/assets/images/faces/face4.jpg" alt="image" class="rounded-circle profile-pic">
+            </div>
+            <div class="preview-item-content">
+                <p class="preview-subject ellipsis mb-1">@item.SenderName <br />Yeni Bir Mesaj Gönderdi</p>
+                <p class="text-muted mb-0">@(((DateTime)item.Date).ToString("dd-MM-yyyy HH:mm"))</p>
+            </div>
+        </a>
+        <div class="dropdown-divider"></div>
+    }
+
+    <p class="p-3 mb-0 text-center">@Model.Count() Okunmamış Mesaj</p>
+}

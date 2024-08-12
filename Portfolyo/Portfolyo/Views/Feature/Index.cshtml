@@ -1,0 +1,43 @@
+﻿@using Entities.Concrete
+@model Feature
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">Öne Çıkanları Düzenle</h2>
+            <form id="UpdateFeaturePageForm" class="form-sample" asp-controller="Feature" asp-action="Index">
+                @Html.HiddenFor(f => f.FeatureId)
+                <div class="form-group row">
+                    <label asp-for="Header" class="col-sm-2 col-form-label">Başlık</label>
+                    <div class="col-sm-10">
+                        <input asp-for="Header" type="text" class="form-control" placeholder="Başlık" />
+                    </div>
+                    <span asp-validation-for="Header" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="Name" class="col-sm-2 col-form-label">Ad</label>
+                    <div class="col-sm-10">
+                        <input asp-for="Name" type="text" class="form-control" placeholder="Ad" />
+                    </div>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="Title" class="col-sm-2 col-form-label">İçerik</label>
+                    <div class="col-sm-10">
+                        <input asp-for="Title" type="text" class="form-control" placeholder="İçerik" />
+                    </div>
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <input type="submit" class="form-control btn btn-success" value="Kaydet" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

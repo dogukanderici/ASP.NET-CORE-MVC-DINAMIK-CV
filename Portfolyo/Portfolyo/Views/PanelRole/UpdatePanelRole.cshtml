@@ -1,0 +1,55 @@
+﻿@model PanelRoleListViewModel
+@{
+    ViewData["Title"] = "UpdatePanelRole";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">Panel Rol Güncelleme</h2>
+            <form id="UpdateExperienceForm" asp-controller="PanelRole" asp-action="UpdatePanelRole" method="post">
+                @Html.HiddenFor(p => p.PanelRole.Id)
+                <div class="col-md-12 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h2 class="card-title">Panel Rolü Güncelleme</h2>
+                            <form id="AddPanelRoleForm" class="form-sample" asp-controller="PanelRole" asp-action="AddPanelRole" method="post">
+                                <div class="form-group row">
+                                    <label for="Panel-Name" class="col-sm-2 col-form-label">Panel Adı</label>
+                                    <div class="col-sm-4">
+                                        <select id="Panel-Name" class="form-control form-select" asp-for="PanelRole.PanelName" aria-label="Panel Adı">
+                                            <option value="@Model.PanelRole.PanelName" selected>@Model.PanelRole.PanelName</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                @* @Html.HiddenFor(model => model.PanelRole.RoleId) *@
+                                <div class="form-group row">
+                                    <label for="Role-Name" class="col-sm-2 col-form-label">Rol Adı</label>
+                                    <div class="col-sm-4">
+                                        <select id="Role-Name" class="form-control form-select" asp-for="PanelRole.RoleName" aria-label="Rol Adı Seçiniz">
+                                            <option selected>Rol Adı Seçiniz</option>
+                                            @if (Model.WriterRoles.Count() > 0)
+                                            {
+                                                @foreach (var item in Model.WriterRoles)
+                                                {
+                                                    <option value="@item.Name">@item.Name</option>
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <span class="col-sm-2"></span>
+                                    <div class="col-md-2">
+                                        <input type="submit" value="Güncelle" class="form-control btn btn-outline-success" />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

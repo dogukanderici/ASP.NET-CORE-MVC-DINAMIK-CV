@@ -1,0 +1,84 @@
+﻿@using Entities.Concrete
+@model PortfolioListViewModel
+@{
+    ViewData["Title"] = "Projelerim";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="mb-0">Projelerim</h2>
+                <div class="table-responsive">
+                    <table class="table align-items-center table-flush">
+                        <thead>
+                            <tr>
+                                <th>Proje Adı</th>
+                                <th>Proje Maliyeti</th>
+                                <th>Proje Durumu</th>
+                                <th>Proje Görselleri</th>
+                                <th>####</th>
+                                <th>Sil</th>
+                                <th>Güncelle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Portfolios)
+                            {
+                                <tr>
+                                    <td>
+                                        <div class="media align-items-center">
+                                            <a href="#" class="rounded-circle mr-3">
+                                                <img src="~/userfile/@item.Platform" alt="Platform" />
+                                            </a>
+                                            <div class="media-body">
+                                                <span class="name mb-0 text-sm">@item.Name</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>@item.Price</td>
+                                    <td>
+                                        <span class="badge badge-dot mr-4">
+                                            <i class="bg-success"></i>
+                                            <span class="status">Tamamlandı</span>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <a href="#" class="rounded-circle" data-toggle="tooltip" data-original-title="Image1">
+                                                <img alt="Image1" src="~/userfile/@item.Image1">
+                                            </a>
+                                            <a href="#" class="rounded-circle" data-toggle="tooltip" data-original-title="Image2">
+                                                <img alt="Image2" src="~/userfile/@item.Image2">
+                                            </a>
+                                            <a href="#" class="rounded-circle" data-toggle="tooltip" data-original-title="Image3">
+                                                <img alt="Image3" src="~/userfile/@item.Image3">
+                                            </a>
+                                            <a href="#" class="rounded-circle" data-toggle="tooltip" data-original-title="Image4">
+                                                <img alt="Image4" src="~/userfile/@item.Image4">
+                                            </a>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <span class="completion mr-2">@item.Value%</span>
+                                            <div>
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="@item.Value" aria-valuemin="0" aria-valuemax="100" style="width: @item.Value%;"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td scope="row"><a class="btn btn-outline-danger" asp-controller="Portfolio" asp-action="DeletePortfolio" asp-route-id="@item.PortfolioId"><i class="mdi mdi-delete"></i></a></td>
+                                    <td scope="row"><a class="btn btn-outline-primary" asp-controller="Portfolio" asp-action="UpdatePortfolio" asp-route-id="@item.PortfolioId"><i class=" mdi mdi-grease-pencil"></a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <a href="/Portfolio/AddNewPortfolio" class="btn btn-success">Yeni Proje Ekle</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

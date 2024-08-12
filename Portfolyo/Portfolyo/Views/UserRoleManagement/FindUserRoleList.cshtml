@@ -1,0 +1,123 @@
+﻿@using Entities.Concrete
+@model GetUserListViewModel
+
+@{
+    ViewData["Title"] = "UserRoleList";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+@if (ViewBag.ErrorStatus)
+{
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <p class="alert alert-danger">@ViewBag.ErrorMessage</p>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">Kullanıcı Arama</h2>
+            <form id="UpdateRoleForm" asp-controller="UserRoleManagement" asp-action="FindUserRoleList" method="get">
+                <div class="form-group row">
+                    <label asp-for="UserInfo.Email" class="form-control col-sm-2 col-form-label">Kullanıcı Maili</label>
+                    <div class="col-sm-6">
+                        <input asp-for="UserInfo.Email" class="form-control" type="text" placeholder="Kullanıcı Maili" />
+                    </div>
+                    <div class="col-sm-1">
+                        <button type="submit" class="form-control btn btn-outline-success">Ara</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@if (Model != null)
+{
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">Kullanıcı Bilgileri</h2>
+                <form id="UpdateRoleForm" asp-controller="UserRoleManagement" asp-action="UpdateUserRoleList" method="post">
+                    <div class="form-group row">
+                        <div class="col-sm-3">
+                            <label asp-for="UserInfo.Email" class="col-sm-12 col-form-label">Kullanıcı Maili</label>
+                            <div class="col-sm-12">
+                                <input asp-for="UserInfo.Email" class="form-control" style="user-select: none !important;" type="text" />
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <label asp-for="UserInfo.Name" class="col-sm-12 col-form-label">Kullanıcı Adı / Soyadı</label>
+                            <div class="col-sm-12">
+                                <label asp-for="UserInfo.Name" class="form-control" type="text">@Model.UserInfo.Name @Model.UserInfo.Surname</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <label for="Role-Name" class="col-sm-12 col-form-label">Rol Adı</label>
+                            <div class="col-sm-10">
+                                <select id="Role-Name" class="form-control form-select" asp-for="@Model.UserRoleName" aria-label="Rol Adı Seçiniz">
+                                    <option selected>Rol Adı Seçiniz</option>
+                                    @if (Model.Roles.Count() > 0)
+                                    {
+                                        @foreach (var item in Model.Roles)
+                                        {
+                                            <option value="@item.Name">@item.Name</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <label class="col-sm-12 col-form-label"></label>
+                            <div class="col-sm-12">
+                                <input type="submit" value="Yeni Rol Ekle" class="btn btn-outline-success" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+}
+
+@if (Model != null)
+{
+    @if (Model.UserRoleInfo != null)
+    {
+        if (Model.UserRoleInfo.Count() > 0)
+        {
+            <div class="row">
+                <div class="col-md-12 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h2 class="mb-0">Kullanıcı Rol Listesi</h2>
+                            <div class="table-responsive">
+                                <table class="table align-items-center table-flush">
+                                    <thead>
+                                        <tr>
+                                            <th>Rol Adı</th>
+                                            <th>Güncelle</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.UserRoleInfo)
+                                        {
+                                            <tr>
+                                                <th>@item</th>
+                                                <td><a class="btn btn-outline-danger" asp-controller="UserRoleManagement" asp-action="DeleteUserRoleList" asp-route-email="@Model.UserInfo.Email" asp-route-role="@item">Sil</a></td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+}

@@ -1,0 +1,37 @@
+﻿@using Entities.Concrete
+@model ServiceViewModel
+@{
+    ViewData["Title"] = "Yeni Hizmet Ekle";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">Yeni Hizmet Ekleme</h2>
+            <form id="AddNewServiceForm" asp-controller="Service" asp-action="AddNewService" method="post" enctype="multipart/form-data">
+                <div class="form-group row">
+                    <label asp-for="Service.Title" class="col-sm-2 col-form-label">Başlık</label>
+                    <div class="col-sm-10">
+                        <input asp-for="Service.Title" type="text" class="form-control" placeholder="Başlık" />
+                    </div>
+                    <span asp-validation-for="Service.Title" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Hizmet Görseli</label>
+                    <div class="col-sm-10">
+                        <input type="file" asp-for="@Model.ServicePicture" />
+                    </div>
+                    <span asp-validation-for="@Model.ServicePicture" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <span class="col-sm-2"></span>
+                    <div class="col-sm-2">
+                        <input type="submit" class="form-control btn btn-outline-success" value="Kaydet" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

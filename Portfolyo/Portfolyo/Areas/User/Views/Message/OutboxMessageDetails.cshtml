@@ -1,0 +1,63 @@
+﻿@using Entities.Concrete
+@model WriterMessage
+
+@{
+    ViewData["Title"] = "Giden Mesaj Detayı";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+@if (Model == null)
+{
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Giden Mesaj Detayı</h4>
+                <p class="alert alert-danger d-flex justify-content-center align-items-center"><span><i class="mdi mdi-information-outline"></i>Aradğınız Mesaj Bulunamadı</span></p>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Mesaj Detayı</h4>
+                <form id="AnnouncementEditForm" class="forms-sample" asp-area="User" asp-controller="Message" asp-action="OutboxMessageDetails" method="post">
+                    @Html.HiddenFor(m => m.WiterMessageID)
+                    <div class="form-group row">
+                        <label asp-for="ReceiverName" class="col-sm-2">Alıcı Adı</label>
+                        <div class="col-sm-10">
+                            <input asp-for="ReceiverName" type="text" class="form-control" id="InputReceiverName" placeholder="Alıcı Adı">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Receiver" class="col-sm-2">Alıcı</label>
+                        <div class="col-sm-10">
+                            <input asp-for="Receiver" type="text" class="form-control" id="InputAlıcı" placeholder="Alıcı">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Date" class="col-sm-2">Tarih</label>
+                        <div class="col-sm-10">
+                            <input asp-for="Date" type="text" class="form-control" id="InputDate" placeholder="dd.mm.yyyy hh:mm">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Subject" class="col-sm-2">Konu</label>
+                        <div class="col-sm-10">
+                            <input asp-for="Subject" type="text" class="form-control" id="InputSubject" placeholder="Konu">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="MessageContent" class="col-sm-2">İçerik</label>
+                        <div class="col-sm-10">
+                            <textarea asp-for="MessageContent" type="text" class="form-control" id="Inputİçerik" rows="4" placeholder="İçerik"></textarea>
+                        </div>
+                    </div>
+                    @* <input type="submit" value="Güncelle" class="btn btn-success"> *@
+                </form>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,8 @@
+MIT License
+
+Copyright (c) [YIL] [YAZAR ADI]
+
+Bu lisans, aþaðýdaki koþullara baðlý olarak verilmektedir:
+
+1. Bu lisansýn bir kopyasý, yazýlý izin verilen tüm kopyalarda veya önemli kýsmýnda verilmelidir.
+2. Bu yazýlým, "olduðu gibi" saðlanýr ve herhangi bir açýk veya zýmni garanti içermez, bununla birlikte satýlabilirlik, belirli bir amaca uygunluk veya ihlale karþý garantiler dahil.

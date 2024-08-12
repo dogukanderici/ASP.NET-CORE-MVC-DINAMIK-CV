@@ -1,0 +1,57 @@
+﻿@model PanelRoleListViewModel
+
+@{
+    ViewData["Title"] = "AddPanelRole";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">Yeni Panel Rolü Ekleme</h2>
+            <form id="AddPanelRoleForm" class="form-sample" asp-controller="PanelRole" asp-action="AddPanelRole" method="post">
+                <div class="form-group row">
+                    <label for="Panel-Name" class="col-sm-2 col-form-label">Panel Adı</label>
+                    <div class="col-sm-4">
+                        <select id="Panel-Name" class="form-control form-select" asp-for="PanelRole.PanelName" aria-label="Panel Adı Seçiniz">
+                            <option value="Feature" selected>Öne Çıkanlar</option>
+                            <option value="About">Hakkımda</option>
+                            <option value="Service">Hizmetlerim</option>
+                            <option value="Skill">Yeteneklerim</option>
+                            <option value="Portfolio">Projeler</option>
+                            <option value="Experience">Deneyimlerim</option>
+                            <option value="ExperienceAjax">Deneyimlerim Ajax</option>
+                            <option value="Testimonial">Referanslar</option>
+                            <option value="SocialMedia">Sosyal Medya Bilgilerim</option>
+                            <option value="Contact">İletişim Bilgilerim</option>
+                            <option value="Profile">Şifre ve Güvenlik</option>
+                        </select>
+                    </div>
+                </div>
+                @* @Html.HiddenFor(model => model.PanelRole.RoleId) *@
+                <div class="form-group row">
+                    <label for="Role-Name" class="col-sm-2 col-form-label">Rol Adı</label>
+                    <div class="col-sm-4">
+                        <select id="Role-Name" class="form-control form-select" asp-for="PanelRole.RoleName" aria-label="Rol Adı Seçiniz">
+                            <option selected>Rol Adı Seçiniz</option>
+                            @if (Model.WriterRoles.Count() > 0)
+                            {
+                                @foreach (var item in Model.WriterRoles)
+                                {
+                                    <option value="@item.Name">@item.Name</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+                <input type="submit" value="Kaydet" class="btn btn-success" />
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    function updateHiddenField() {
+        var selectedValue = document.getElementById("Role-Name").value;
+        document.getElementById("PanelRole_RoleId").value = selectedValue;
+    }
+</script>

@@ -1,0 +1,45 @@
+﻿@using Entities.Concrete
+@model Announcement
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "AnnouncementDetails";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Duyuru Detayları</h4>
+            <form id="AnnouncementEditForm" class="forms-sample" asp-area="User" asp-controller="Default" asp-action="AnnouncementDetails" method="post">
+                @Html.HiddenFor(a => a.AnnouncementId)
+                <div class="form-group row">
+                    <label asp-for="Title" class="col-sm-2">Başlık</label>
+                    <div class="col-sm-10">
+                        <input asp-for="Title" type="text" class="form-control" id="InputAnnouncementTitle" placeholder="Başlık">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="Content" class="col-sm-2">İçerik</label>
+                    <div class="col-sm-10">
+                        <input asp-for="Content" type="text" class="form-control" id="InputAnnouncementContent" placeholder="İçerik">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="Date" class="col-sm-2">Tarih</label>
+                    <div class="col-sm-10">
+                        <input asp-for="Date" type="text" class="form-control" id="InputAnnouncementDate" placeholder="dd.mm.yyyy hh:mm">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="Status" class="col-sm-2">Durum</label>
+                    <div class="col-sm-10">
+                        <input asp-for="Status" type="text" class="form-control" id="InputAnnouncementStatus" placeholder="true or false">
+                    </div>
+                </div>
+                <input type="submit" value="Güncelle" class="btn btn-success">
+            </form>
+        </div>
+    </div>
+</div>
+
