@@ -1,13 +1,21 @@
 MIT License
 
-Copyright (c) 2024 Doðukan Derici
+Copyright (c) 2024 DoÃ°ukan Derici
 
-Bu lisans, aþaðýdaki koþullarý saðlamanýz þartýyla bu yazýlým ve iliþkili belgeler (the "Yazýlým")'ý kullanma, kopyalama, deðiþtirme, birleþtirme, yayýmlama, daðýtma, alt lisans verme ve satma hakký verir:
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-1. Yukarýdaki telif hakký bildirimi ve bu izin bildirimi, Yazýlým'ýn tüm kopyalarýna veya önemli bölümlerine dahil edilmelidir.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-2. YAZILIM "OLDUÐU GÝBÝ" SUNULUR, HERHANGÝ BÝR GARANTÝYÝ KAPSAMAZ, DOLAYISIYLA TÝCARÝ ELVERÝÞLÝLÝK, BELÝRLÝ BÝR AMACA UYGUNLUK VEYA ÝHLAL ETMÝYOR OLMA GARANTÝLERÝ DAHÝL ANCAK BUNLARLA SINIRLI OLMAYAN GARANTÝLERÝ KAPSLAMAZ. YAZILIM'I KULLANIMINIZDA DOÐAN HERHANGÝ BÝR ZARAR YAZILIM'I SAHÝBÝNÝN SORUMLULUÐUNDADIR.
-
-3. YAZILIM’IN KULLANIMINDAN DOÐAN HERHANGÝ BÝR ZARAR VEYA KULLANIM HATALARINDAN DOÐAN SONUÇLAR ÝÇÝN SAHÝBÝNÝN SORUMLULUÐU YOKTUR. BU, HERHANGÝ BÝR YÜKÜMLÜLÜK, SORUMLULUK VEYA CEZA YASALARINA KARÞI ÖNCEKÝ VEYA GELECEKTEKÝ DAVA VEYA ÝDDÝALARLA SINIRLANABÝLÝR.
-
-2024 tarihli bu telif hakký bildirimi ve bu izin bildirimi bu Yazýlým ile birlikte sunulmalýdýr.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
