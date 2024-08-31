@@ -1,4 +1,4 @@
-﻿using Business.Abstract;
+using Business.Abstract;
 using Business.Contants;
 using Core.Utilities.Result;
 using DataAccess.Abstract;
@@ -49,7 +49,14 @@ namespace Business.Concrete
 
         public IResult TUpdate(About entity)
         {
-            _aboutDal.UpdateData(entity);
+            if (entity.AboutId < 1)
+            {
+                _aboutDal.AddData(entity);
+            }
+            else
+            {
+                _aboutDal.UpdateData(entity);
+            }
 
             return new SuccessResult(Messages.UpdatedData);
         }
