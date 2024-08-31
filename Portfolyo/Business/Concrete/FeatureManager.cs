@@ -1,7 +1,8 @@
-﻿using Business.Abstract;
+using Business.Abstract;
 using Business.Contants;
 using Core.Utilities.Result;
 using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -47,7 +48,14 @@ namespace Business.Concrete
 
         public IResult TUpdate(Feature entity)
         {
-            _featureDal.UpdateData(entity);
+            if (entity.FeatureId < 1)
+            {
+                _featureDal.AddData(entity);
+            }
+            else
+            {
+                _featureDal.UpdateData(entity);
+            }
 
             return new SuccessResult(Messages.UpdatedData);
         }
