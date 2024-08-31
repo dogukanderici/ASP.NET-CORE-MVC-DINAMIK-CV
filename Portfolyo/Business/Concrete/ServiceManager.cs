@@ -1,7 +1,8 @@
-﻿using Business.Abstract;
+using Business.Abstract;
 using Business.Contants;
 using Core.Utilities.Result;
 using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -50,7 +51,14 @@ namespace Business.Concrete
 
         public IResult TUpdate(Service entity)
         {
-            _serviceDal.UpdateData(entity);
+            if (entity.SercviceId < 1)
+            {
+                _serviceDal.AddData(entity);
+            }
+            else
+            {
+                _serviceDal.UpdateData(entity);
+            }
 
             return new SuccessResult(Messages.UpdatedData);
         }
