@@ -1,7 +1,8 @@
-﻿using Business.Abstract;
+using Business.Abstract;
 using Business.Contants;
 using Core.Utilities.Result;
 using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -58,7 +59,14 @@ namespace Business.Concrete
 
         public IResult TUpdate(Portfolio entity)
         {
-            _portfolioDal.UpdateData(entity);
+            if (entity.PortfolioId < 1)
+            {
+                _portfolioDal.AddData(entity);
+            }
+            else
+            {
+                _portfolioDal.UpdateData(entity);
+            }
 
             return new SuccessResult(Messages.UpdatedData);
         }
