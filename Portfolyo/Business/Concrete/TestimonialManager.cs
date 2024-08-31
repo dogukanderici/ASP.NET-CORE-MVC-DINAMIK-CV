@@ -1,7 +1,8 @@
-﻿using Business.Abstract;
+using Business.Abstract;
 using Business.Contants;
 using Core.Utilities.Result;
 using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -50,7 +51,14 @@ namespace Business.Concrete
 
         public IResult TUpdate(Testimonial entity)
         {
-            _testimonialDal.UpdateData(entity);
+            if (entity.TestimonialId < 1)
+            {
+                _testimonialDal.AddData(entity);
+            }
+            else
+            {
+                _testimonialDal.UpdateData(entity);
+            }
 
             return new SuccessResult(Messages.UpdatedData);
         }
