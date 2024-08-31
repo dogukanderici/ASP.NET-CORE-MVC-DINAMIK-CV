@@ -1,8 +1,9 @@
-﻿using Business.Abstract;
+using Business.Abstract;
 using Business.Contants;
 using Core.Entities.Abstract;
 using Core.Utilities.Result;
 using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -51,7 +52,14 @@ namespace Business.Concrete
 
         public IResult TUpdate(SocialMedia entity)
         {
-            _socialMediaDal.UpdateData(entity);
+            if (entity.SocialMediaId < 1)
+            {
+                _socialMediaDal.AddData(entity);
+            }
+            else
+            {
+                _socialMediaDal.UpdateData(entity);
+            }
 
             return new SuccessResult(Messages.UpdatedData);
         }
